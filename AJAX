@@ -1,1 +1,29 @@
 //AJAX 
+
+// Module for getting data from API
+var ServerAPI = (function() {
+  var BASE_URL = 'https://reqres.in/api';
+
+  function getUser(userId, callback) {
+    $.ajax({
+      method: 'GET',
+      url: BASE_URL + '/users/' + userId,
+      complete: callback,
+    });
+  }
+
+  function getCars(callback) {
+
+    $.ajax({
+      method: 'GET',
+      url: BASE_URL + '/cars/',
+      success: callback
+    });
+
+  }
+
+  return {
+    getUser: getUser,
+    getCars: getCars
+  };
+})();
